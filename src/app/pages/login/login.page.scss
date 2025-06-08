@@ -1,0 +1,67 @@
+.content-center {
+  display: flex;
+  justify-content: center;      // Horizontal
+  align-items: center;          // Vertical
+  height: 100%;                 // Requerido para centrar verticalmente
+}
+
+ion-content {
+  --padding-top: 0;             // Remueve padding superior
+  --padding-bottom: 0;          // Remueve padding inferior
+  --overflow: hidden;           // Evita desbordamiento
+  height: 100%;
+  --background: linear-gradient(to bottom, #243746, #1a2735); // fondo oscuro o con imagen
+}
+
+.content-card {
+  background-color: rgba(255, 255, 255, 0.70); // blanco con 25% de opacidad
+  backdrop-filter: blur(10px);                // desenfoque del fondo
+  -webkit-backdrop-filter: blur(10px);    
+  width: 90%;
+  max-width: 400px;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 16px;
+}
+
+.card-title{
+  font-size: 45px; // Ajusta según lo grande que necesites
+  color: #243746;  // Color que especificaste
+  font-weight: bold; // Opcional, para destacar
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-align: center;
+}
+
+.input_login {
+  font-size: 18px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --background: rgba(255, 255, 255, 0.1);            
+  --border-color: rgba(36, 55, 70, 0.637);          
+  --highlight-color-focused: #243746;                
+  --color: #243746;                                  
+  --placeholder-color: rgba(36, 55, 70, 0.6); 
+  --padding-start: 16px;
+  --padding-end: 16px;
+  margin-bottom: 16px;
+}
+
+.button_contraseña {
+  font-size: 14px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #243746;
+  text-transform: none;   // Para que no convierta a mayúsculas
+  text-align: center;
+  height: auto;
+  min-height: 0;
+  --color-focused: #243746; // mantiene color al hacer focus
+}
+
+.button_login {
+  --background: #243746;  // Naranjo personalizado basado en FamilyShop
+  --color: white;         // Texto blanco
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 15px;
+  height: 56px;  // Alto general del botón
+}
