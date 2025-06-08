@@ -1,0 +1,7 @@
+{
+  "name": "gestionInsumos",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
