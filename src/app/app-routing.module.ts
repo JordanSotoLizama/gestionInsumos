@@ -15,6 +15,14 @@ const routes: Routes = [
     path: 'home-menu',
     loadChildren: () => import('./pages/home-menu/home-menu.module').then( m => m.HomeMenuPageModule)
   },
+  {
+    path: 'ajustes',
+    loadChildren: () => import('./pages/ajustes/ajustes.module').then( m => m.AjustesPageModule)
+  },
+  {
+    path: 'perfil',
+    loadChildren: () => import('./pages/perfil/perfil.module').then( m => m.PerfilPageModule)
+  },
 ];
 
 @NgModule({

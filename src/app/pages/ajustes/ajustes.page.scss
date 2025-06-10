@@ -1,0 +1,61 @@
+// Ajustes – Header
+$fondo: #ECEFF1;
+$blanco:     #ffffff;
+$color-principal: #243746;
+
+.header-ajustes {
+  --padding-start: 0;
+  --padding-end:   0;
+  --background: #243746;     // color de fondo principal
+  min-height: 7rem;          // ocupa más espacio vertical
+  display: flex;
+  align-items: center;       // centra el título verticalmente
+  justify-content: center;
+}
+
+.header-ajustes ion-title {
+  color: #ffffff; 
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 35px;         // lo suficientemente grande para resaltar
+  font-weight: 600;
+  width: 100%;              // que ocupe todo el ancho
+  text-align: center;       // centro de texto
+}
+
+.ajustes-page{
+    --background: #ECEFF1;
+}
+
+.card{
+    --background: #ffffff;         /* tarjeta blanca */
+    border-radius: 0.75rem;        /* esquinas redondeadas */ 
+    /* margen: 0.75rem arriba/abajo y 1rem izquierda/derecha */
+    margin: 0 1rem;        
+    --inner-padding-start: 1.2rem;  // antes 1.25rem
+    --inner-padding-end:   1.2rem;
+    --padding-top:         0.5rem;  // antes 0.75rem
+    --padding-bottom:      0.5rem;
+
+    /* Opcional: forzar una altura mínima */
+    min-height: 3rem;
+
+    ion-label{
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        color: #243746;
+        font-size: 1.3rem;
+        font-weight: 550;
+    }
+    ion-icon{
+        color: #243746;
+        font-size: 1.6rem;
+    }
+}
+
+ion-item.card:first-child {
+  margin-top: 2rem;
+}
+
+// 2) Cards consecutivas: espacio reducido entre ellas
+ion-item.card + ion-item.card {
+  margin-top: 0.75rem;
+}

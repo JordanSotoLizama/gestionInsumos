@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar class="header-ajustes header-large">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home-menu"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Ajustes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="ajustes-page">
+  <!-- Primer Tarjeta: Perfil -->
+  <ion-item 
+    class="card" 
+    lines="none"
+    routerLink="/perfil"
+  >
+    <ion-label>Perfil</ion-label>
+    <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+  </ion-item>
+  <!-- Segunda Tarjeta: Notificaciones -->
+  <ion-item 
+    class="card" 
+    lines="none"
+  >
+    <ion-label>Notificaciones</ion-label>
+    <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+  </ion-item>
+  <!-- Tercera Tarjeta: Tema -->
+  <ion-item 
+    class="card" 
+    lines="none"
+  >
+    <ion-label>Tema</ion-label>
+    <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+  </ion-item>
+  <!-- Cuarta Tarjeta: Sincronizar -->
+  <ion-item 
+    class="card" 
+    lines="none"
+  >
+    <ion-label>Sincronizar</ion-label>
+    <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+  </ion-item>
+  <!-- Quinta Tarjeta: Limpiar cache -->
+  <ion-item 
+    class="card" 
+    lines="none"
+  >
+    <ion-label>Limpiar caché</ion-label>
+    <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+  </ion-item>
+  <!-- Sexta Tarjeta: Acerca de -->
+  <ion-item 
+    class="card" 
+    lines="none"
+  >
+    <ion-label>Acerca de</ion-label>
+    <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+  </ion-item>
+  <!-- Septima Tarjeta: cerrar sesión -->
+  <ion-item 
+    class="card" 
+    lines="none"
+    (click)="confirmLogout()"
+  >
+    <ion-icon name="log-out-outline" slot="start"></ion-icon>
+    <ion-label>Cerrar sesión</ion-label>
+    <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
+  </ion-item>
+</ion-content>

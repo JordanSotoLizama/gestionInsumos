@@ -1,0 +1,83 @@
+// Variables
+$fondo:           #ECEFF1;
+$blanco:          #ffffff;
+$color-principal: #243746;
+
+// Header igual que Ajustes
+.header-perfil {
+  --padding-start: 0rem;
+  --padding-end:   0rem;
+  --background:    #243746;
+  min-height:      7rem;
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+}
+
+.header-perfil ion-buttons[slot="start"] {
+  margin-right: auto;
+}
+
+.header-perfil ion-title {
+  color:       #ffffff;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size:   2.2rem;
+  font-weight: 600;
+  width:       100%;
+  text-align:  center;
+  margin: 0;
+}
+
+// Fondo de la página
+.perfil-page {
+  --background: #ECEFF1;
+  padding-top:  1rem;
+}
+
+// Avatar
+.avatar-wrapper {
+  display:         flex;
+  justify-content: center;
+  margin-top: 2rem;
+  margin-bottom:   2rem;
+
+  ion-avatar {
+    width:        10rem;
+    height:       10rem;
+    border:       0.25rem solid #ffffff;
+    box-shadow:   0 2px 6px rgba(0,0,0,0.15);
+
+    img {
+      border-radius: 50%;
+    }
+  }
+}
+
+// Tarjetas de datos
+ion-item.card {
+  --background:          #ffffff;
+  border-radius:         0.75rem;
+  margin:                0 1rem;       // solo margen lateral
+  --inner-padding-start: 1.3rem;
+  --inner-padding-end:   1.3rem;
+  --padding-top:         1rem;
+  --padding-bottom:      1rem;
+  min-height:            3.5rem;
+
+  ion-icon {
+    color:     #243746;       // iconos en #243746
+    font-size: 1.6rem;
+  }
+
+  ion-label {
+    font-family:  "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color:        #243746;
+    font-size:    1.3rem;
+    font-weight:  700;
+  }
+
+  // Espacio solo entre tarjetas
+  & + & {
+    margin-top: 0.75rem;
+  }
+}
