@@ -6,7 +6,7 @@
     <!-- Fila 1 -->
     <ion-row>
       <ion-col size="6" size-md="4">
-        <ion-card [routerLink]="['/login']" class="card-opcion">
+        <ion-card [routerLink]="['/insumos-picking']" class="card-opcion">
           <ion-card-content>
             <img src="assets/icon/picking-icon.png" class="icono-opcion" alt="icono picking" />
             <div class="texto-opcion">Picking de insumos</div>
@@ -14,7 +14,7 @@
         </ion-card>
       </ion-col>
       <ion-col size="6" size-md="4">
-        <ion-card class="card-opcion">
+        <ion-card [routerLink]="['/insumos-distribuir']" class="card-opcion">
           <ion-card-content>
             <img src="assets/icon/distribuir-icon.png" class="icono-distribuir" alt="icono distribuir" />
             <div class="texto-opcion">Distribuir Insumos</div>
@@ -26,7 +26,7 @@
     <!-- Fila 2 -->
     <ion-row>
       <ion-col size="6" size-md="4">
-        <ion-card class="card-opcion">
+        <ion-card [routerLink]="['/insumos-evidencias']" class="card-opcion">
           <ion-card-content>
             <img src="assets/icon/evidencias-icon.png" class="icono-evidencias" alt="icono evidencias" />
             <div class="texto-opcion">Ver Evidencias</div>
@@ -34,7 +34,7 @@
         </ion-card>
       </ion-col>
       <ion-col size="6" size-md="4">
-        <ion-card class="card-opcion">
+        <ion-card [routerLink]="['/insumos-inventario']" class="card-opcion">
           <ion-card-content>
             <img src="assets/icon/inventario-icon.png" class="icono-inventario" alt="icono inventario" />
             <div class="texto-opcion">Inventario</div>
@@ -46,7 +46,7 @@
     <!-- Fila 3 -->
     <ion-row>
       <ion-col size="6" size-md="4">
-        <ion-card class="card-opcion">
+        <ion-card [routerLink]="['/insumos-entrada']" class="card-opcion">
           <ion-card-content>
             <img src="assets/icon/entrada-icon.png" class="icono-entrada" alt="icono entrada" />
             <div class="texto-opcion">Entrada de Insumos</div>
@@ -54,7 +54,7 @@
         </ion-card>
       </ion-col>
       <ion-col size="6" size-md="4">
-        <ion-card class="card-opcion">
+        <ion-card [routerLink]="['/insumos-historial']" class="card-opcion">
           <ion-card-content>
             <img src="assets/icon/historial-icon.png" class="icono-historial" alt="icono historial" />
             <div class="texto-opcion">Historial de Movimientos</div>
@@ -66,7 +66,7 @@
     <!-- Fila 4: una tarjeta centrada -->
     <ion-row>
       <ion-col size="6" offset="3">
-        <ion-card class="card-opcion" routerLink="/ajustes">
+        <ion-card [routerLink]="['/ajustes']" class="card-opcion" >
           <ion-card-content>
             <img src="assets/icon/ajustes-icon.png" class="icono-ajustes" alt="icono ajustes" />
             <div class="texto-opcion">Ajustes</div>
