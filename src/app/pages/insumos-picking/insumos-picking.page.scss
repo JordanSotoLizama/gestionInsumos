@@ -87,3 +87,94 @@
   gap: 20px;
   padding-top: 20px;
 }
+
+ion-grid {
+  margin-top: 16px;
+  padding-inline: 0;
+
+  ion-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+
+    ion-col {
+      padding: 0;
+
+      ion-item {
+        --background: #ffffff;
+        --border-color: #cfd8dc;
+        --border-width: 1px;
+        --border-radius: 8px;
+        --min-height: 50px;
+
+        ion-label {
+          font-weight: 600;
+          color: #243746;
+          font-size: 14px;
+        }
+
+        ion-input {
+          color: #243746;
+          font-size: 16px;
+          padding-top: 4px;
+        }
+      }
+    }
+  }
+}
+
+ion-item.invalido {
+  --border-color: #e53935 !important; // rojo
+  --background: #fff5f5;
+}
+
+.mensaje-error {
+  font-size: 13px;
+  margin-top: 4px;
+  margin-left: 4px;
+  display: block;
+}
+
+.tabla-insumos {
+  margin-top: 16px;
+  --background: #ffffff;
+  border-radius: 10px;
+  padding: 8px;
+  font-size: 15px;
+  color: #243746;
+
+  .encabezado {
+    font-weight: bold;
+    border-bottom: 1px solid #cfd8dc;
+    margin-bottom: 6px;
+  }
+
+  ion-row {
+    padding: 6px 0;
+    border-bottom: 1px solid #f1f1f1;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  .texto-derecha {
+    text-align: right;
+  }
+}
+
+.agregar-insumo-btn {
+  font-weight: bold;
+  color: #243746;
+  margin-top: 8px;
+}
+
+.icono-borrar {
+  margin-left: 8px;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+ion-content {
+  --background: #ECEFF1;
+}

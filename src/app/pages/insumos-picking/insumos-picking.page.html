@@ -13,5 +13,59 @@
       <ion-label position="stacked">Tienda</ion-label>
       <ion-text>{{ tiendaSeleccionada || 'Seleccionar tienda' }}</ion-text>
     </ion-item>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-item lines="inset">
+            <ion-label position="stacked">Año</ion-label>
+            <ion-input [value]="anioActual" readonly></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item lines="inset" [class.invalido]="semanaInvalida">
+            <ion-label position="stacked">Semana</ion-label>
+            <ion-input type="number" [(ngModel)]="semanaActual" placeholder="Ej: 12"></ion-input>
+          </ion-item>
+          <ion-text color="danger" *ngIf="semanaInvalida" class="mensaje-error">
+            Semana inválida (debe ser entre 1 y 52)
+          </ion-text>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-card class="tabla-insumos" *ngIf="insumos.length > 0">
+      <ion-grid>
+        <ion-row class="encabezado">
+          <ion-col><strong>Insumo</strong></ion-col>
+          <ion-col size="4" class="texto-derecha"><strong>Cantidad</strong></ion-col>
+        </ion-row>
+        <ion-row *ngFor="let i of insumos; let idx = index">
+          <ion-col>{{ i.nombre }}</ion-col>
+          <ion-col size="4" class="texto-derecha">{{ i.cantidad }}
+            <ion-icon
+              name="trash-outline"
+              color="danger"
+              size="small"
+              class="icono-borrar"
+              (click)="eliminarInsumo(idx)"
+            ></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+
+    <ion-button fill="clear" color="dark-primary" expand="full" (click)="seleccionarInsumo()" class="agregar-insumo-btn">
+      + Agregar Insumo
+    </ion-button>
+
+    <ion-button
+      expand="block"
+      color="dark-primary"
+      (click)="guardarAsignacion()"
+      [disabled]="!formularioValido"
+    >
+      GUARDAR ASIGNACIÓN
+    </ion-button>
   </div>
 </ion-content>
