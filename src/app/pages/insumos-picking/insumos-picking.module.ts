@@ -7,14 +7,18 @@ import { IonicModule } from '@ionic/angular';
 import { InsumosPickingPageRoutingModule } from './insumos-picking-routing.module';
 
 import { InsumosPickingPage } from './insumos-picking.page';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    InsumosPickingPageRoutingModule
+    InsumosPickingPageRoutingModule,
+    SharedModule
   ],
-  declarations: [InsumosPickingPage]
+  declarations: [
+    InsumosPickingPage,
+  ]
 })
 export class InsumosPickingPageModule {}

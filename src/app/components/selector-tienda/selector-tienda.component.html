@@ -1,0 +1,24 @@
+<div class="contenedor-selector">
+  <div class="header">
+    <h2>Seleccionar Tienda</h2>
+    <input
+      type="text"
+      [(ngModel)]="busqueda"
+      placeholder="Buscar tienda..."
+      class="buscador"
+    />
+  </div>
+
+  <ul class="lista-tiendas">
+    <li class="item-tienda" (click)="seleccionarTienda(null)">
+      Borrar seleccion
+    </li>
+    <li
+      *ngFor="let tienda of tiendasFiltradas"
+      (click)="seleccionarTienda(tienda)"
+      class="item-tienda"
+    >
+      {{ tienda }}
+    </li>
+  </ul>
+</div>

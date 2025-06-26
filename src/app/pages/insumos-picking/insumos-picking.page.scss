@@ -1,0 +1,89 @@
+/* Asegura que todo el contenido del modal ignore el tema oscuro */
+:host-context(.dark) ion-modal::part(content),
+:host-context(.dark) ion-modal,
+:host-context(.dark) ion-modal * {
+  --ion-background-color: #ECEFF1 !important;
+  background: #ECEFF1 !important;
+  color: #243746 !important;
+}
+
+::ng-deep ion-modal::part(content) {
+  background: #ECEFF1 !important;
+  color-scheme: light;
+}
+
+::ng-deep ion-modal {
+  --width: 90%;
+  --height: 60%;
+  --border-radius: 16px;
+  --box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  --background: #ECEFF1 !important;
+  --ion-background-color: #ECEFF1 !important;
+  --max-width: 400px;
+}
+
+::ng-deep ion-modal ion-toolbar {
+  background: #243746 !important;
+  --background: #243746 !important;
+  --color: #ffffff !important;
+}
+
+::ng-deep ion-modal ion-title {
+  color: #ffffff !important;
+  font-weight: bold;
+}
+
+::ng-deep ion-modal ion-content {
+  --background: #ECEFF1 !important;
+  background: #ECEFF1 !important;
+}
+
+::ng-deep ion-modal ion-searchbar {
+  margin: 10px;
+  --background: #ffffff !important;
+  --color: #000000 !important;
+  --placeholder-color: #999 !important;
+  --border-radius: 8px;
+  --box-shadow: none;
+}
+
+::ng-deep ion-modal ion-list {
+  margin: 0 10px;
+}
+
+::ng-deep ion-modal ion-item {
+  border-radius: 8px;
+  margin-bottom: 6px;
+  --background: #ffffff !important;
+  color: #243746 !important;
+  font-weight: 500;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.selector-tienda {
+  margin-top: 12px;
+  border-radius: 8px;
+  --background: #ffffff;
+  --border-color: #cfd8dc;
+  --border-width: 1px;
+  --min-height: 50px;
+
+  ion-label {
+    font-weight: 600;
+    color: #243746;
+    font-size: 14px;
+  }
+
+  ion-text {
+    padding-top: 4px;
+    font-size: 16px;
+    color: #243746;
+  }
+}
+
+.contenido-picking {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 20px;
+}

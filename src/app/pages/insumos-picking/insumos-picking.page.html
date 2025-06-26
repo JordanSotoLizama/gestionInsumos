@@ -1,16 +1,17 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
+<ion-header>
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/home-menu"></ion-back-button>
     </ion-buttons>
-    <ion-title>insumos-picking</ion-title>
+    <ion-title>Picking</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">insumos-picking</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+  <div class="contenido-picking">
+    <ion-item lines="inset" detail button (click)="abrirSelectorTienda()" class="selector-tienda">
+      <ion-label position="stacked">Tienda</ion-label>
+      <ion-text>{{ tiendaSeleccionada || 'Seleccionar tienda' }}</ion-text>
+    </ion-item>
+  </div>
 </ion-content>
