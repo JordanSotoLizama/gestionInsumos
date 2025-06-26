@@ -178,3 +178,25 @@ ion-item.invalido {
 ion-content {
   --background: #ECEFF1;
 }
+
+.btn-personalizado {
+  --background: #243746;
+  --color: #ffffff;
+  --border-radius: 10px;
+  font-weight: 600;
+}
+
+.header-personalizado {
+  --background: #243746;
+  --color: #ffffff;
+  --ion-color-base: #ffffff;
+
+  ion-title {
+    color: #ffffff;
+    font-weight: bold;
+  }
+
+  ion-back-button {
+    --color: #ffffff;
+  }
+}
