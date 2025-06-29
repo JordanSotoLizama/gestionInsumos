@@ -1,5 +1,5 @@
 ion-content {
-  --background: linear-gradient(to bottom, #243746, #1a2735); // fondo oscuro o con imagen
+  --background: #ECEFF1;
 }
 
 .title{
@@ -10,7 +10,7 @@ ion-content {
     font-size: 35px;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     margin: 0;
-    color: #ffffff;
+    color: #243746;
 }
 ion-card {
   text-align: center;
@@ -33,7 +33,7 @@ ion-card {
 
 .card-opcion {
   height: 200px; // ajusta según tu diseño
-  background-color: rgba(255, 255, 255, 0.70); // blanco con 25% de opacidad
+  background-color: #ffffff;
   backdrop-filter: blur(10px);                // desenfoque del fondo
   -webkit-backdrop-filter: blur(10px);  
   border-radius: 20px;

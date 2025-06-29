@@ -1,0 +1,71 @@
+.header-personalizado {
+  --background: #243746;
+  --color: #ffffff;
+  --ion-color-base: #ffffff;
+
+  ion-title {
+    color: #ffffff;
+    font-weight: bold;
+  }
+
+  ion-back-button {
+    --color: #ffffff;
+  }
+}
+
+.fondo-evidencias {
+  --background: #ECEFF1;
+}
+
+.searchbar-evidencias {
+  margin-bottom: 16px;
+  --background: #ffffff;
+  --box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+ion-content {
+  --background: #ECEFF1;
+}
+
+.carta-evidencia {
+  margin: 10px;
+  border-radius: 12px;
+  --background: #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+
+  ion-item {
+    --background: transparent;
+  }
+
+  ion-label h2 {
+    font-weight: bold;
+    color: #243746;
+    margin: 0;
+  }
+
+  ion-label p {
+    margin-top: 4px;
+    color: #444;
+  }
+
+  ion-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ECEFF1;
+    border-radius: 8px;
+    width: 48px;
+    height: 48px;
+  }
+
+  ion-icon {
+    font-size: 24px;
+    color: #243746;
+  }
+}
+
+ion-searchbar {
+  --color: #243746;
+  font-weight: 500;
+}

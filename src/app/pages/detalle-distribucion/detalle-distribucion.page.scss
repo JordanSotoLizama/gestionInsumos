@@ -1,0 +1,102 @@
+ion-toolbar {
+  --background: #243746;
+  --color: #ffffff;
+  --ion-color-base: #ffffff;
+}
+
+ion-title {
+  color: #ffffff;
+  font-weight: bold;
+  text-align: center;
+}
+
+ion-back-button {
+  --color: #ffffff;
+}
+
+.fondo-pagina {
+  --background: #ECEFF1;
+}
+
+.card-distribucion {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.foto-area {
+  border: 2px dashed #ECEFF1;
+  background: #f9f9f9;
+  padding: 24px;
+  text-align: center;
+  border-radius: 10px;
+  margin: 16px auto;
+  color: #243746;
+  width: 100%;
+  max-width: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.icono-foto {
+  font-size: 24px;
+  margin-bottom: 8px;
+}
+
+.titulo-tienda {
+  color: #243746;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.lista-insumos {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin: 12px 0;
+  color: #243746;
+}
+
+.foto-area {
+  color: #243746; /* icono y texto */
+}
+
+ion-label {
+  color: #243746 !important;
+}
+
+.notas-container {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.label-notas {
+  font-weight: 600;
+  color: #243746;
+  margin-bottom: 8px;
+  font-size: 15px;
+}
+
+.textarea-notas {
+  --background: #ffffff;
+  --color: #243746;
+  --padding-start: 10px;
+  --padding-end: 10px;
+  --border-radius: 8px;
+  border: 1.5px solid #ECEFF1;
+  width: 100%;
+  font-size: 14px;
+}
+
+.btn-personalizado {
+  --background: #243746;
+  --color: #ffffff;
+  font-weight: 600;
+  border-radius: 10px;
+  margin-top: 24px;
+}

@@ -1,16 +1,32 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
+<ion-header >
+  <ion-toolbar class="header-personalizado">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/home-menu"></ion-back-button>
     </ion-buttons>
-    <ion-title>insumos-evidencias</ion-title>
+    <ion-title>Ver Evidencias</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">insumos-evidencias</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding fondo-evidencias">
+
+  <!-- Searchbar -->
+  <ion-searchbar
+    [(ngModel)]="terminoBusqueda"
+    placeholder="Buscar tienda, año o semana"
+    showClearButton="focus"
+    class="searchbar-evidencias"
+  ></ion-searchbar>
+
+  <ion-card *ngFor="let evidencia of evidenciasFiltradas" class="carta-evidencia">
+    <ion-item lines="none">
+      <ion-avatar slot="start">
+        <ion-icon name="image-outline" size="large"></ion-icon>
+      </ion-avatar>
+      <ion-label>
+        <h2>Semana {{ evidencia.semana }} • Año {{ evidencia.anio }}</h2>
+        <p>Tienda: {{ evidencia.tienda }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-card>
+
 </ion-content>

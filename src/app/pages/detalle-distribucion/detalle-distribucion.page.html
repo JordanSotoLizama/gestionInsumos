@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/insumos-distribuir"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Distribuir Insumos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding fondo-pagina">
+
+  <ion-card class="card-distribucion">
+    <ion-card-header>
+      <ion-card-title class="titulo-tienda">{{ tienda }}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ul class="lista-insumos">
+        <li>20 Cintas de embalaje</li>
+        <li>4 Cintas TTR</li>
+        <li>60 Rollos térmicos</li>
+      </ul>
+
+      <div class="foto-area" (click)="agregarFoto()">
+        <ion-icon name="camera-outline" class="icono-foto"></ion-icon>
+        <div>Agregar foto</div>
+      </div>
+
+      <div class="notas-container">
+        <label class="label-notas">Notas</label>
+        <ion-textarea
+          class="textarea-notas"
+          [(ngModel)]="nota"
+          autoGrow="true">
+        </ion-textarea>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button expand="block" class="btn-personalizado" (click)="guardarDistribucion()">
+    GUARDAR DISTRIBUCIÓN
+  </ion-button>
+
+</ion-content>

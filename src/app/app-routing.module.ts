@@ -47,6 +47,10 @@ const routes: Routes = [
     path: 'insumos-inventario',
     loadChildren: () => import('./pages/insumos-inventario/insumos-inventario.module').then( m => m.InsumosInventarioPageModule)
   },
+  {
+    path: 'detalle-distribucion/:tienda/:semana/:anio',
+    loadChildren: () => import('./pages/detalle-distribucion/detalle-distribucion.module').then(m => m.DetalleDistribucionPageModule)
+  },
 ];
 
 @NgModule({
