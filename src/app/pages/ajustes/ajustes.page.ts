@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController, NavController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ajustes',
@@ -9,8 +10,11 @@ import { AlertController, NavController } from '@ionic/angular';
 })
 export class AjustesPage implements OnInit {
 
-  constructor(private alertCtrl: AlertController, 
-              private navCtrl: NavController) { }
+  constructor(
+    private alertCtrl: AlertController, 
+    private navCtrl: NavController,
+    private router: Router
+  ) { }
 
   ngOnInit() {
   }
@@ -18,19 +22,23 @@ export class AjustesPage implements OnInit {
   async confirmLogout() {
     const alert = await this.alertCtrl.create({
       header: 'Cerrar sesión',
-      message: '¿Estás seguro de cerrar sesión?',
+      message: '¿Estás seguro de que quieres cerrar sesión?',
       buttons: [
-        { text: 'No', role: 'cancel' },
         {
-          text: 'Sí',
+          text: 'Cancelar',
+          role: 'cancel'
+        },
+        {
+          text: 'Cerrar sesión',
           handler: () => {
-            // navega a /login como raíz (limpia historial)
-            this.navCtrl.navigateRoot('/login');
+            localStorage.removeItem('usuario');
+            this.router.navigate(['/login']);
           }
         }
       ]
     });
-    await alert.present();
-  }
+
+  await alert.present();
+}
   
 }

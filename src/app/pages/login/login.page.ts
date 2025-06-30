@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 interface User {
   email: string;
@@ -42,11 +43,18 @@ export class LoginPage implements OnInit {
   ];
 
   constructor(
+    private router: Router,
     private navCtrl: NavController,
     private alertCtrl: AlertController
   ) { }
 
   ngOnInit() {
+
+    const usuario = localStorage.getItem('usuario');
+    if (usuario) {
+      this.router.navigate(['/home-menu']);
+    }
+    
   }
 
   async login() {
