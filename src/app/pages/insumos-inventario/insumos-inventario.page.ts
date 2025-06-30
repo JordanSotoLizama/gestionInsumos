@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { InsumosService } from 'src/app/services/insumos.service';
 
 @Component({
   selector: 'app-insumos-inventario',
@@ -8,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InsumosInventarioPage implements OnInit {
 
-  constructor() { }
+  insumos: any[] = [];
+
+  constructor(private insumosService: InsumosService) { }
 
   ngOnInit() {
+
+    this.insumosService.obtenerInsumos().subscribe(data => {
+      this.insumos = data;
+    });
   }
 
 }

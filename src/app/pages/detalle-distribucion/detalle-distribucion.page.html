@@ -26,6 +26,10 @@
         <div>Agregar foto</div>
       </div>
 
+      <div *ngIf="foto" class="foto-preview">
+        <img [src]="foto" alt="Foto capturada" style="width: 100%; border-radius: 12px; margin-top: 12px;" />
+      </div>
+
       <div class="notas-container">
         <label class="label-notas">Notas</label>
         <ion-textarea

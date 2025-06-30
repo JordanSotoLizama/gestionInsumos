@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 
 @Component({
   selector: 'app-detalle-distribucion',
@@ -14,8 +15,8 @@ export class DetalleDistribucionPage implements OnInit {
   tienda: string = '';
   semana: string = '';
   anio: string = '';
-
   nota: string = '';
+  foto: string | null = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -29,8 +30,23 @@ export class DetalleDistribucionPage implements OnInit {
     this.anio = this.route.snapshot.paramMap.get('anio') || '';
   }
 
-  agregarFoto() {
-    console.log('Aquí se abriría la cámara...'); // luego lo conectaremos con cámara real
+  async agregarFoto() {
+    try {
+      const image = await Camera.getPhoto({
+        quality: 70,
+        allowEditing: false,
+        resultType: CameraResultType.DataUrl,
+        source: CameraSource.Camera,
+      });
+
+      if (image.dataUrl) {
+        this.foto = image.dataUrl;
+      } else {
+        this.foto = null;
+      }
+    } catch (error) {
+      console.log('Error al capturar foto:', error);
+    }
   }
 
   async guardarDistribucion() {

@@ -1,0 +1,10 @@
+{
+  "insumos": [
+    { "id": 1, "nombre": "Cinta de embalaje", "stock": 300 },
+    { "id": 2, "nombre": "Cinta TTR", "stock": 100 },
+    { "id": 3, "nombre": "Etiqueta Amarilla", "stock": 100 },
+    { "id": 4, "nombre": "Etiqueta Blanca", "stock": 100 },
+    { "id": 5, "nombre": "Rollos térmicos", "stock":  1250},
+    { "id": 6, "nombre": "Toner 1060", "stock": 50 }
+  ]
+}
