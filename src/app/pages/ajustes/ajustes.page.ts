@@ -31,7 +31,7 @@ export class AjustesPage implements OnInit {
         {
           text: 'Cerrar sesión',
           handler: () => {
-            localStorage.removeItem('usuario');
+            localStorage.removeItem('currentUser');
             this.router.navigate(['/login']);
           }
         }

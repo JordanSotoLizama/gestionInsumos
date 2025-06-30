@@ -9,7 +9,7 @@ export class LoginGuard implements CanActivate {
   constructor(private router: Router) {}
 
   canActivate(): boolean {
-    const usuario = localStorage.getItem('usuario');
+    const usuario = localStorage.getItem('currentUser');
     if (usuario) {
       // Si ya está logueado, redirige al home
       this.router.navigate(['/home-menu']);

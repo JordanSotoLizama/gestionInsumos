@@ -50,7 +50,7 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
 
-    const usuario = localStorage.getItem('usuario');
+    const usuario = localStorage.getItem('currentUser');
     if (usuario) {
       this.router.navigate(['/home-menu']);
     }
