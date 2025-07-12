@@ -13,7 +13,7 @@ import { RedirectorPage } from './redirector.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    RedirectorPageRoutingModule
+    RedirectorPageRoutingModule,
   ],
   declarations: [RedirectorPage]
 })

@@ -8,12 +8,12 @@
       <ion-card-content class="card-content">
         <ion-input 
           class="input_login" 
-          label="Correo Electrónico" 
-          type="email" 
+          label="Nombre de usuario" 
+          type="text" 
           label-placement="floating" 
           fill="outline" 
-          placeholder="usuario@dominio.cl"
-          [(ngModel)]="email">
+          placeholder="usuario"
+          [(ngModel)]="username">
         </ion-input>
         <ion-input class="input_login"
           label="Contraseña" 
@@ -27,6 +27,9 @@
           ¿Olvidaste tu contraseña?
         </ion-button>
         <ion-button class="button_login" expand="block" (click)="login()">Login</ion-button>
+        <ion-text color="danger" *ngIf="error">
+        <p class="ion-padding-top">{{ error }}</p>
+        </ion-text>
       </ion-card-content>
     </ion-card>
   </div>

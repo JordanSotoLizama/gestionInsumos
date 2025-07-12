@@ -1,23 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Auth, onAuthStateChanged } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-redirector',
-  template: '',
-  standalone: false, // No muestra nada
+  template: '', // No muestra nada, solo redirige
+  standalone: false,
 })
-export class RedirectorPage {
-  constructor(private router: Router) {
-  }
+export class RedirectorPage implements OnInit {
+  constructor(private router: Router, private auth: Auth) {}
 
   ngOnInit(): void {
-    setTimeout(() => {
-      const usuario = localStorage.getItem('currentUser');
-     if (usuario) {
-        this.router.navigate(['/home-menu']);
-     } else {
-        this.router.navigate(['/login']);
-     }
-    }, 0); // Fuerza a que la redirección ocurra en el siguiente ciclo del event loop
+    console.log('RedirectorPage cargado');
+    // Escucha si el usuario está autenticado en Firebase
+    onAuthStateChanged(this.auth, (user) => {
+      if (user) {
+        this.router.navigate(['/home-menu']); // Usuario logueado
+      } else {
+        this.router.navigate(['/login']); // Usuario no logueado
+      }
+    });
   }
 }

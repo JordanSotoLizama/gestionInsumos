@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { AlertController, NavController } from '@ionic/angular';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Auth } from '@angular/fire/auth';
+import { signOut } from 'firebase/auth';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-ajustes',
@@ -8,21 +10,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./ajustes.page.scss'],
   standalone: false,
 })
-export class AjustesPage implements OnInit {
+export class AjustesPage {
 
   constructor(
-    private alertCtrl: AlertController, 
-    private navCtrl: NavController,
-    private router: Router
-  ) { }
-
-  ngOnInit() {
-  }
+    private auth: Auth,
+    private router: Router,
+    private alertController: AlertController
+  ) {}
 
   async confirmLogout() {
-    const alert = await this.alertCtrl.create({
-      header: 'Cerrar sesión',
-      message: '¿Estás seguro de que quieres cerrar sesión?',
+    const alert = await this.alertController.create({
+      header: '¿Cerrar sesión?',
+      message: '¿Estás seguro que quieres cerrar tu sesión?',
       buttons: [
         {
           text: 'Cancelar',
@@ -31,14 +30,22 @@ export class AjustesPage implements OnInit {
         {
           text: 'Cerrar sesión',
           handler: () => {
-            localStorage.removeItem('currentUser');
-            this.router.navigate(['/login']);
+            this.logout();
           }
         }
       ]
     });
 
-  await alert.present();
-}
-  
+    await alert.present();
+  }
+
+  logout() {
+    signOut(this.auth)
+      .then(() => {
+        this.router.navigate(['/login']);
+      })
+      .catch(error => {
+        console.error('Error al cerrar sesión:', error);
+      });
+  }
 }
