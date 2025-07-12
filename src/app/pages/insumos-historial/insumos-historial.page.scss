@@ -1,0 +1,87 @@
+.content-personalizado {
+  --background: #ecf0f3;
+}
+
+.fila {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fecha {
+  font-weight: bold;
+  font-size: 0.9rem;
+  color: #243746;
+}
+
+.info {
+  text-align: center;
+}
+
+.nombre {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #243746;
+}
+
+.cantidad {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #243746;
+}
+
+.badge-ingreso {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 2px 8px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+}
+
+.badge-salida {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 2px 8px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+}
+
+.tarjeta-historial{
+  --background: #ffffff;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+ion-searchbar {
+  --background: #ffffff;
+  --color: #243746;
+  --placeholder-color: #999;
+  --border-radius: 10px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
+}
+
+.grid-filtros {
+  margin-bottom: 16px;
+
+  ion-searchbar {
+    --background: #f4f4f4;
+    --border-radius: 8px;
+  }
+
+  .fecha-seleccionada {
+    margin-top: 8px;
+    font-size: 0.9rem;
+    color: var(--ion-color-medium);
+  }
+
+  ion-button[color="danger"] {
+    margin-top: 4px;
+  }
+}
+

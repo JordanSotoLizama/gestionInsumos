@@ -1,16 +1,94 @@
-<ion-header [translucent]="true">
+<ion-header class="header-personalizado">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/home-menu"></ion-back-button>
     </ion-buttons>
-    <ion-title>insumos-historial</ion-title>
+    <ion-title>Historial de Movimientos</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">insumos-historial</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding content-personalizado">
+  <!-- Filtros: Insumo + Fecha con botón -->
+  <ion-grid class="grid-filtros">
+    <ion-row>
+      <!-- Filtro por insumo -->
+      <ion-col size="8">
+        <ion-searchbar
+          placeholder="Buscar insumo"
+          [(ngModel)]="filtroInsumo"
+          (ionInput)="filtrarMovimientos()"
+          animated
+          showClearButton="always">
+        </ion-searchbar>
+      </ion-col>
+
+      <!-- Botón para mostrar/ocultar filtro de fecha -->
+      <ion-col size="4" class="ion-align-self-center ion-text-right">
+        <ion-button fill="outline" size="small" (click)="mostrarFecha = !mostrarFecha">
+          <ion-icon slot="start" name="calendar-outline"></ion-icon>
+          Fecha
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <!-- Selector de fecha visible sólo si se activa -->
+    <ion-row *ngIf="mostrarFecha">
+      <ion-col size="12">
+        <!-- Fecha desde -->
+        <ion-item lines="none">
+          <ion-label position="stacked">Desde</ion-label>
+          <ion-datetime
+            [(ngModel)]="fechaDesde"
+            presentation="date"
+            (ionChange)="filtrarMovimientos()">
+          </ion-datetime>
+        </ion-item>
+
+        <!-- Fecha hasta -->
+        <ion-item lines="none">
+          <ion-label position="stacked">Hasta</ion-label>
+          <ion-datetime
+            [(ngModel)]="fechaHasta"
+            presentation="date"
+            (ionChange)="filtrarMovimientos()">
+          </ion-datetime>
+        </ion-item>
+
+        <!-- Etiqueta con rango actual -->
+        <ion-text color="medium" *ngIf="fechaDesde || fechaHasta">
+          <p class="fecha-seleccionada">
+            Rango: 
+            {{ fechaDesde ? (fechaDesde | date:'dd/MM/yyyy') : '...' }} 
+            – 
+            {{ fechaHasta ? (fechaHasta | date:'dd/MM/yyyy') : '...' }}
+          </p>
+        </ion-text>
+
+        <!-- Botón para limpiar ambos -->
+        <ion-button fill="clear" size="small" color="danger" (click)="limpiarRangoFechas()">
+          <ion-icon slot="start" name="close-circle-outline"></ion-icon>
+          Limpiar rango
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- Lista de movimientos -->
+  <ion-card *ngFor="let mov of movimientosFiltrados" class="tarjeta-historial">
+    <ion-card-content>
+      <div class="fila">
+        <div class="fecha">
+          <div>{{ mov.fecha | date:'dd/MM' }}</div>
+          <div>{{ mov.fecha | date:'yyyy' }}</div>
+        </div>
+        <div class="info">
+          <div class="nombre">{{ mov.insumo }}</div>
+          <div [ngClass]="mov.tipo === 'Ingreso' ? 'badge-ingreso' : 'badge-salida'">
+            {{ mov.tipo }}
+          </div>
+        </div>
+        <div class="cantidad">{{ mov.cantidad }}</div>
+      </div>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

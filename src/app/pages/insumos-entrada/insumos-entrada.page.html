@@ -1,16 +1,33 @@
-<ion-header [translucent]="true">
+<ion-header class="header-personalizado">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/home-menu"></ion-back-button>
     </ion-buttons>
-    <ion-title>insumos-entrada</ion-title>
+    <ion-title>Entrada de Insumos</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">insumos-entrada</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding content-personalizado">
+  <ion-card class="card-formulario">
+    <ion-card-content>
+
+      <ion-label class="campo-label">Insumo</ion-label>
+      <ion-select interface="popover" [(ngModel)]="insumoSeleccionado" class="campo-input">
+        <ion-select-option value="Cinta de embalaje">Cinta de embalaje</ion-select-option>
+        <ion-select-option value="Etiqueta amarilla">Etiqueta amarilla</ion-select-option>
+        <ion-select-option value="Rollos térmicos">Rollos térmicos</ion-select-option>
+      </ion-select>
+
+      <ion-label class="campo-label">Cantidad</ion-label>
+      <ion-input type="number" [(ngModel)]="cantidad" class="campo-input"></ion-input>
+
+      <ion-label class="campo-label">Fecha</ion-label>
+      <ion-input readonly [value]="fechaActual" class="campo-input"></ion-input>
+
+      <ion-button expand="block" class="boton-guardar" (click)="guardarInsumo()" [disabled]="! insumoSeleccionado || ! cantidad">
+        GUARDAR
+      </ion-button>
+
+    </ion-card-content>
+  </ion-card>
 </ion-content>

@@ -17,7 +17,7 @@
     class="searchbar-evidencias"
   ></ion-searchbar>
 
-  <ion-card *ngFor="let evidencia of evidenciasFiltradas" class="carta-evidencia">
+  <ion-card *ngFor="let evidencia of evidenciasFiltradas" class="carta-evidencia" (click)="abrirDetalle(evidencia)">
     <ion-item lines="none">
       <ion-avatar slot="start">
         <ion-icon name="image-outline" size="large"></ion-icon>

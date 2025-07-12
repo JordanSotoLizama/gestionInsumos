@@ -1,0 +1,37 @@
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title>Detalle de Evidencia</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cerrar()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{ evidencia.tienda }}</ion-card-title>
+      <ion-card-subtitle>Semana {{ evidencia.semana }} - Año {{ evidencia.anio }}</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p><strong>Insumos del paquete:</strong></p>
+      <ul>
+        <li *ngFor="let item of evidencia.insumos">{{ item }}</li>
+      </ul>
+
+      <p><strong>Nota:</strong></p>
+      <p>{{ evidencia.nota || 'Sin nota registrada' }}</p>
+
+      <p><strong>Foto de evidencia:</strong></p>
+      <img [src]="evidencia.imagen || 'https://via.placeholder.com/300x200?text=Evidencia+Mock'" alt="Foto evidencia" style="width: 100%; border-radius: 8px; margin-top: 8px;" />
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button expand="block" (click)="compartirEvidencia()">
+    <ion-icon name="share-social-outline" slot="start"></ion-icon>
+    Compartir evidencia
+  </ion-button>
+</ion-content>

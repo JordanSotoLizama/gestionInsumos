@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-
+import { ModalController } from '@ionic/angular';
+import { EvidenciaDetalleComponent } from 'src/app/components/evidencia-detalle/evidencia-detalle.component';
 @Component({
   selector: 'app-insumos-evidencias',
   templateUrl: './insumos-evidencias.page.html',
@@ -17,7 +18,7 @@ export class InsumosEvidenciasPage implements OnInit {
     { tienda: 'Quilicura', anio: 2024, semana: 23 },
   ];
 
-  constructor() { }
+  constructor(private modalCtrl: ModalController) { }
 
   ngOnInit() {
   }
@@ -29,6 +30,14 @@ export class InsumosEvidenciasPage implements OnInit {
       e.anio.toString().includes(term) ||
       e.semana.toString().includes(term)
     );
+  }
+
+  async abrirDetalle(evidencia: any) {
+    const modal = await this.modalCtrl.create({
+      component: EvidenciaDetalleComponent,
+      componentProps: { evidencia }
+    });
+    await modal.present();
   }
 
 }
