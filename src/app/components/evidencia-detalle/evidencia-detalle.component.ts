@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 
 @Component({
@@ -10,7 +10,15 @@ import { ModalController } from '@ionic/angular';
 export class EvidenciaDetalleComponent {
   @Input() evidencia: any;
 
+  insumos: { nombre: string; cantidad: number }[] = [];
+
   constructor(private modalCtrl: ModalController) {}
+
+  ngOnInit() {
+    if (this.evidencia?.insumos) {
+      this.insumos = this.evidencia.insumos;
+    }
+  }
 
   cerrar() {
     this.modalCtrl.dismiss();
@@ -20,33 +28,46 @@ export class EvidenciaDetalleComponent {
     const mensaje = `
   *Evidencia de Entrega*
 
-  Tienda: ${this.evidencia.tienda}
-  Semana ${this.evidencia.semana} - Año ${this.evidencia.anio}
+  📦 Tienda: ${this.evidencia.tienda}
+  📆 Semana: ${this.evidencia.semana} • Año: ${this.evidencia.anio}
 
-  Insumos entregados:
-  ${this.evidencia.insumos?.map((i: string) => '• ' + i).join('\n') || 'Sin detalle'}
+  📋 Insumos entregados:
+  ${this.evidencia.insumos?.map((i: any) => `• ${i.nombre} (x${i.cantidad})`).join('\n') || 'Sin detalle'}
 
-  Nota:
+  📝 Nota:
   ${this.evidencia.nota || 'Sin nota registrada'}
-    `.trim();
+  `.trim();
 
-    // Si navegador soporta compartir
-    if (navigator.share) {
-      try {
+    try {
+      const response = await fetch(this.evidencia.fotoUrl);
+      const blob = await response.blob();
+
+      const file = new File([blob], `evidencia_${this.evidencia.tienda}.jpg`, {
+        type: blob.type
+      });
+
+      // Verifica si se puede compartir con archivo
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
         await navigator.share({
           title: 'Evidencia de Entrega',
           text: mensaje,
-          // files: [imagenBlob] // ← esto lo agregaremos cuando tengamos imagen como blob
+          files: [file]
         });
-        console.log('Evidencia compartida con éxito');
-      } catch (err) {
-        console.error('Error al compartir', err);
+        console.log('Compartido con imagen como archivo');
+      } else {
+        // Advertencia + fallback
+        alert('⚠️ Tu dispositivo no soporta compartir archivos adjuntos. Se enviará un mensaje con el enlace a la imagen.');
+
+        const textoCodificado = encodeURIComponent(`${mensaje}\n\n🔗 Imagen: ${this.evidencia.fotoUrl}`);
+        window.open(`https://wa.me/?text=${textoCodificado}`, '_blank');
       }
-    } else {
-      // Fallback para dispositivos que no soportan navigator.share
-      const textoCodificado = encodeURIComponent(mensaje);
-      const enlaceWhatsApp = `https://wa.me/?text=${textoCodificado}`;
-      window.open(enlaceWhatsApp, '_blank');
+    } catch (err) {
+      console.error('Error al compartir evidencia:', err);
+
+      alert('⚠️ Ocurrió un error al adjuntar la imagen. Se enviará solo el texto con enlace.');
+
+      const textoCodificado = encodeURIComponent(`${mensaje}\n\n🔗 Imagen: ${this.evidencia.fotoUrl}`);
+      window.open(`https://wa.me/?text=${textoCodificado}`, '_blank');
     }
   }
 }

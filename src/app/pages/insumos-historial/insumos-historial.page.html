@@ -82,8 +82,8 @@
           <div>{{ mov.fecha | date:'yyyy' }}</div>
         </div>
         <div class="info">
-          <div class="nombre">{{ mov.insumo }}</div>
-          <div [ngClass]="mov.tipo === 'Ingreso' ? 'badge-ingreso' : 'badge-salida'">
+          <div class="nombre">{{ mov.insumo?.nombre || mov.insumo }}</div>
+          <div [ngClass]="mov.tipo === 'entrada' ? 'badge-ingreso' : 'badge-salida'">
             {{ mov.tipo }}
           </div>
         </div>

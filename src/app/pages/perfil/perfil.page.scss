@@ -81,3 +81,14 @@ ion-item.card {
     margin-top: 0.75rem;
   }
 }
+
+.nombre-usuario {
+  text-align: center;
+  margin-top: 10px;
+
+  h2 {
+    color: #243746; // color azul oscuro del header
+    font-weight: 600;
+    font-size: 20px;
+  }
+}

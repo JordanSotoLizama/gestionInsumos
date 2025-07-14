@@ -19,14 +19,20 @@
     <ion-card-content>
       <p><strong>Insumos del paquete:</strong></p>
       <ul>
-        <li *ngFor="let item of evidencia.insumos">{{ item }}</li>
+        <li *ngFor="let item of insumos">
+          {{ item.nombre }}: {{ item.cantidad }} unidades
+        </li>
       </ul>
 
       <p><strong>Nota:</strong></p>
       <p>{{ evidencia.nota || 'Sin nota registrada' }}</p>
 
       <p><strong>Foto de evidencia:</strong></p>
-      <img [src]="evidencia.imagen || 'https://via.placeholder.com/300x200?text=Evidencia+Mock'" alt="Foto evidencia" style="width: 100%; border-radius: 8px; margin-top: 8px;" />
+      <img
+        [src]="evidencia.fotoUrl || 'https://via.placeholder.com/300x200?text=Sin+Foto'"
+        alt="Foto evidencia"
+        style="width: 100%; border-radius: 8px; margin-top: 8px;"
+      />
     </ion-card-content>
   </ion-card>
 

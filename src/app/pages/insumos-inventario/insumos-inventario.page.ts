@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { InsumosService } from 'src/app/services/insumos.service';
+import { InsumosService, Insumo } from 'src/app/services/insumos.service';
 
 @Component({
   selector: 'app-insumos-inventario',
@@ -16,15 +16,11 @@ export class InsumosInventarioPage implements OnInit {
   constructor(private insumosService: InsumosService) { }
 
   ngOnInit() {
-
-    this.insumosService.obtenerInsumos().subscribe(data => {
-    this.insumos = data;
-    this.insumosFiltrados = [...this.insumos]; // Inicializa con todos
-    } );
-
-    this.insumosService.obtenerInsumos().subscribe(data => {
+     this.insumosService.getInsumos().subscribe(data => {
       this.insumos = data;
+      this.insumosFiltrados = data;
     });
+
   }
 
   filtrarInsumos() {

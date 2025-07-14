@@ -12,6 +12,7 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { provideStorage, getStorage } from '@angular/fire/storage';
 import { firebaseConfig } from 'src/environments/firebase-config';
 import { provideAuth, getAuth } from '@angular/fire/auth';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     IonicModule.forRoot(),
   ],
   providers: [

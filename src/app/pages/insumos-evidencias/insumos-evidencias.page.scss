@@ -59,13 +59,19 @@ ion-content {
     height: 48px;
   }
 
-  ion-icon {
-    font-size: 24px;
-    color: #243746;
-  }
+  
 }
 
 ion-searchbar {
   --color: #243746;
   font-weight: 500;
+}
+
+.imagen-evidencia {
+  width: 100%;
+  height: auto;
+  max-height: 120px;
+  object-fit: contain;
+  padding: 6px;
+  border-radius: 8px;
 }

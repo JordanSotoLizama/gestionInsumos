@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { Firestore, collection, collectionData } from '@angular/fire/firestore';
+
 
 @Component({
   selector: 'app-insumos-historial',
@@ -9,16 +11,11 @@ import { ModalController } from '@ionic/angular';
 })
 export class InsumosHistorialPage implements OnInit {
 
-  movimientos = [
-    { fecha: new Date(2025, 5, 2), insumo: 'Guantes', tipo: 'Ingreso', cantidad: 20 },
-    { fecha: new Date(2025, 5, 1), insumo: 'Cinta de embalaje', tipo: 'Salida', cantidad: 15 },
-    { fecha: new Date(2025, 4, 28), insumo: 'Guantes', tipo: 'Ingreso', cantidad: 20 },
-    { fecha: new Date(2025, 4, 25), insumo: 'Cinta de embalaje', tipo: 'Salida', cantidad: 15 }
-  ];
+  movimientos: any[] = [];
 
   mostrarFecha: boolean = false;
 
-  movimientosFiltrados = [...this.movimientos];
+  movimientosFiltrados: any[] = [];
   filtroInsumo: string = '';
   filtroFecha: string | null = null;
   fechaDesde: string | null = null;
@@ -30,25 +27,24 @@ export class InsumosHistorialPage implements OnInit {
     const hasta = this.fechaHasta ? new Date(this.fechaHasta) : null;
 
     this.movimientosFiltrados = this.movimientos.filter(mov => {
-      const coincideNombre = mov.insumo.toLowerCase().includes(nombre);
-      const fechaMov = new Date(mov.fecha);
+      // 1. Convertir el nombre correctamente (string o { nombre: string })
+      const insumoTexto = typeof mov.insumo === 'string'
+        ? mov.insumo
+        : mov.insumo?.nombre || '';
+
+      const coincideNombre = insumoTexto.toLowerCase().includes(nombre);
+
+      // 2. Convertir fecha a Date
+      const fechaMov = new Date(mov.fecha?.seconds ? mov.fecha.seconds * 1000 : mov.fecha);
 
       let dentroDelRango = true;
 
       if (desde) {
-        const d = new Date(desde);
-        dentroDelRango =
-          fechaMov.getFullYear() > d.getFullYear() ||
-          (fechaMov.getFullYear() === d.getFullYear() && fechaMov.getMonth() > d.getMonth()) ||
-          (fechaMov.getFullYear() === d.getFullYear() && fechaMov.getMonth() === d.getMonth() && fechaMov.getDate() >= d.getDate());
+        dentroDelRango = fechaMov >= desde;
       }
 
       if (hasta && dentroDelRango) {
-        const h = new Date(hasta);
-        dentroDelRango =
-          fechaMov.getFullYear() < h.getFullYear() ||
-          (fechaMov.getFullYear() === h.getFullYear() && fechaMov.getMonth() < h.getMonth()) ||
-          (fechaMov.getFullYear() === h.getFullYear() && fechaMov.getMonth() === h.getMonth() && fechaMov.getDate() <= h.getDate());
+        dentroDelRango = fechaMov <= hasta;
       }
 
       return coincideNombre && dentroDelRango;
@@ -61,11 +57,24 @@ export class InsumosHistorialPage implements OnInit {
     this.filtrarMovimientos();
   }
 
-  constructor(private modalCtrl: ModalController) {
+  constructor(
+    private modalCtrl: ModalController,
+    private firestore: Firestore
+  ) {
 
    }
 
   ngOnInit() {
+    const ref = collection(this.firestore, 'movimientos');
+    collectionData(ref, { idField: 'id' }).subscribe((data: any[]) => {
+      this.movimientos = data.map(mov => ({
+        ...mov,
+        // Convierte el timestamp a Date si es necesario
+        fecha: mov.fecha?.seconds ? new Date(mov.fecha.seconds * 1000) : mov.fecha
+      })).sort((a, b) => new Date(b.fecha).getTime() - new Date(a.fecha).getTime());
+
+      this.filtrarMovimientos();
+    });
   }
 
 }

@@ -13,9 +13,9 @@
 
       <ion-label class="campo-label">Insumo</ion-label>
       <ion-select interface="popover" [(ngModel)]="insumoSeleccionado" class="campo-input">
-        <ion-select-option value="Cinta de embalaje">Cinta de embalaje</ion-select-option>
-        <ion-select-option value="Etiqueta amarilla">Etiqueta amarilla</ion-select-option>
-        <ion-select-option value="Rollos térmicos">Rollos térmicos</ion-select-option>
+        <ion-select-option *ngFor="let insumo of insumos" [value]="insumo">
+          {{ insumo.nombre }}
+        </ion-select-option>
       </ion-select>
 
       <ion-label class="campo-label">Cantidad</ion-label>

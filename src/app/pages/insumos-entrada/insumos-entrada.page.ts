@@ -1,42 +1,62 @@
 import { Component, OnInit } from '@angular/core';
-import { ToastController } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
+import { InsumosService } from 'src/app/services/insumos.service';
+import { Insumo } from 'src/app/services/insumos.service';
+import { Firestore, collection, addDoc, Timestamp } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-insumos-entrada',
   templateUrl: './insumos-entrada.page.html',
   styleUrls: ['./insumos-entrada.page.scss'],
-  standalone: false,
+  standalone: false
 })
 export class InsumosEntradaPage implements OnInit {
 
-  insumoSeleccionado: string = '';
+  insumos: Insumo[] = [];
+  insumoSeleccionado: Insumo | null = null;
   cantidad: number | null = null;
-  fechaActual: string = '';
+  fechaActual: string = new Date().toLocaleDateString('es-CL');
 
-  constructor(private toastCtrl: ToastController){
-
-  }
+  constructor(
+    private insumosService: InsumosService,
+    private alertCtrl: AlertController,
+    private firestore: Firestore
+  ) {}
 
   ngOnInit() {
-    const hoy = new Date();
-
-    const dia = hoy.getDate().toString().padStart(2, '0');
-    const mes = (hoy.getMonth() + 1).toString().padStart(2, '0');
-    const anio = hoy.getFullYear();
-
-  this.fechaActual = `${dia}/${mes}/${anio}`;
+    this.insumosService.getInsumos().subscribe(data => {
+      this.insumos = data;
+    });
   }
 
   async guardarInsumo() {
-    const toast = await this.toastCtrl.create({
-      message: '✅ Insumo ingresado con éxito',
-      duration: 2000,
-      color: 'success',
-      position: 'bottom',
-    });
-    toast.present();
-    this.insumoSeleccionado = '';
-    this.cantidad = null;
-  }
+    if (!this.insumoSeleccionado || !this.cantidad || this.cantidad <= 0) return;
 
+    try {
+      // 1. Actualizar stock
+      await this.insumosService.actualizarStock(this.insumoSeleccionado.id, this.cantidad);
+
+      // 2. Registrar entrada en "movimientos"
+      const ref = collection(this.firestore, 'movimientos');
+      await addDoc(ref, {
+        tipo: 'entrada',
+        insumo: this.insumoSeleccionado,
+        cantidad: this.cantidad,
+        fecha: Timestamp.now()
+      });
+
+      const alert = await this.alertCtrl.create({
+        header: 'Éxito',
+        message: 'El insumo fue ingresado correctamente.',
+        buttons: ['OK']
+      });
+      await alert.present();
+
+      this.insumoSeleccionado.nombre = '';
+      this.cantidad = null;
+
+    } catch (error) {
+      console.error('Error al guardar:', error);
+    }
+  }
 }

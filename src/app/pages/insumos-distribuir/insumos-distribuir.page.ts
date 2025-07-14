@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DistribuirService, PaquetePickeado } from 'src/app/services/distribuir.service';
 
 @Component({
   selector: 'app-insumos-distribuir',
@@ -11,36 +12,35 @@ import { Router } from '@angular/router';
 
 export class InsumosDistribuirPage implements OnInit {
 
-
+  distribuciones: PaquetePickeado[] = [];
   terminoBusqueda: string = '';
 
-  distribuciones: any[] = [
-    { tienda: 'Tienda 1', semana: 12, anio: 2024 },
-    { tienda: 'Tienda 2', semana: 11, anio: 2024 },
-    { tienda: 'Tienda 3', semana: 12, anio: 2024 },
-    { tienda: 'Tienda 4', semana: 13, anio: 2024 }
-  ];
-
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private distribuirService: DistribuirService,
+  ) { }
 
   ngOnInit() {
+    this.distribuirService.getPaquetes().subscribe(data => {
+      this.distribuciones = data;
+      console.log('Paquetes cargados:', data);
+    });
   }
 
-  get distribucionesFiltradas(): any[] {
-    const termino = this.terminoBusqueda.toLowerCase();
+  get distribucionesFiltradas(): PaquetePickeado[] {
     return this.distribuciones.filter(d =>
-      d.tienda.toLowerCase().includes(termino)
+      d.tienda.toLowerCase().includes(this.terminoBusqueda.toLowerCase())
     );
+  }
 
-  
-}
-
-irADetalle(d: any) {
-  const tienda = encodeURIComponent(d.tienda);
-  const semana = d.semana;
-  const anio = d.anio;
-
-  this.router.navigate([`/detalle-distribucion/${tienda}/${semana}/${anio}`]);
-}
+  irADetalle(paquete: PaquetePickeado) {
+    this.router.navigate([
+      '/detalle-distribucion',
+      paquete.tienda,
+      paquete.semana,
+      paquete.anio,
+      paquete.id
+    ]);
+  }
 
 }

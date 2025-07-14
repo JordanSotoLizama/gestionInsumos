@@ -16,9 +16,9 @@
 
     <ion-card-content>
       <ul class="lista-insumos">
-        <li>20 Cintas de embalaje</li>
-        <li>4 Cintas TTR</li>
-        <li>60 Rollos térmicos</li>
+        <li *ngFor="let insumo of insumos">
+          {{ insumo.cantidad }} {{ insumo.nombre }}
+        </li>
       </ul>
 
       <div class="foto-area" (click)="agregarFoto()">

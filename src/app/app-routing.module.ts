@@ -60,7 +60,7 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'detalle-distribucion/:tienda/:semana/:anio',
+    path: 'detalle-distribucion/:tienda/:semana/:anio/:id',
     loadChildren: () => import('./pages/detalle-distribucion/detalle-distribucion.module').then(m => m.DetalleDistribucionPageModule),
     canActivate: [AuthGuard]
   },

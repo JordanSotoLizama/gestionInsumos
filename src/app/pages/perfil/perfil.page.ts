@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
-interface User {
-  email: string;
-  password: string;
-  phone: string;
-  role: string;
-}
+import { Auth } from '@angular/fire/auth';
+import { Firestore, doc, getDoc } from '@angular/fire/firestore';
+import { User } from 'firebase/auth';
 
 @Component({
   selector: 'app-perfil',
@@ -18,18 +14,31 @@ export class PerfilPage implements OnInit {
   userEmail: string = '';
   userPhone: string = '';
   userRole: string = '';
+  userNombre: string = '';
 
-  constructor() { }
+  constructor(private auth: Auth, private firestore: Firestore) {}
 
   ngOnInit() {
-     // Recuperamos el usuario del localStorage
-    const stored = localStorage.getItem('currentUser');
-    if (stored) {
-      const user: User = JSON.parse(stored);
-      this.userEmail = user.email;
-      this.userPhone = user.phone;
-      this.userRole = user.role;
+    const currentUser: User | null = this.auth.currentUser;
+
+    if (currentUser) {
+      const uid = currentUser.uid;
+      this.loadUserData(uid);
     }
   }
 
+  async loadUserData(uid: string) {
+    const userDocRef = doc(this.firestore, 'usuarios', uid);
+    const userSnapshot = await getDoc(userDocRef);
+
+    if (userSnapshot.exists()) {
+      const data = userSnapshot.data();
+      this.userEmail = data['correo'] || '';
+      this.userPhone = data['telefono'] || '';
+      this.userRole = data['cargo'] || '';
+      this.userNombre = data['usuario'] || '';
+    } else {
+      console.warn('No se encontró el perfil del usuario en Firestore.');
+    }
+  }
 }
