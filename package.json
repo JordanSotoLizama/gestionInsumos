@@ -22,9 +22,10 @@
     "@angular/platform-browser": "^20.1.0",
     "@angular/platform-browser-dynamic": "^20.1.0",
     "@angular/router": "^20.1.0",
+    "@capacitor/android": "^7.4.2",
     "@capacitor/app": "7.0.1",
     "@capacitor/camera": "^7.0.1",
-    "@capacitor/core": "7.3.0",
+    "@capacitor/core": "^7.4.2",
     "@capacitor/haptics": "7.0.1",
     "@capacitor/keyboard": "7.0.1",
     "@capacitor/status-bar": "7.0.1",
@@ -37,6 +38,7 @@
     "zone.js": "~0.15.0"
   },
   "devDependencies": {
+    "@angular-devkit/build-angular": "^20.1.0",
     "@angular-eslint/builder": "^19.0.0",
     "@angular-eslint/eslint-plugin": "^19.0.0",
     "@angular-eslint/eslint-plugin-template": "^19.0.0",
@@ -51,6 +53,7 @@
     "@types/jasmine": "~5.1.0",
     "@typescript-eslint/eslint-plugin": "^8.18.0",
     "@typescript-eslint/parser": "^8.18.0",
+    "chromedriver": "^138.0.2",
     "eslint": "^9.16.0",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-jsdoc": "^48.2.1",
@@ -62,6 +65,8 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "protractor": "^7.0.0",
+    "ts-node": "^10.9.2",
     "typescript": "~5.8.3"
   },
   "description": "An Ionic project"

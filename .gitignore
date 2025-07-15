@@ -71,3 +71,5 @@ Thumbs.db
 
 # Firebase config
 src/environments/firebase-config.ts
+
+e2e/
