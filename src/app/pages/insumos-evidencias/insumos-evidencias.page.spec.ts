@@ -5,9 +5,9 @@ import { FormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { of } from 'rxjs';
-import { EvidenciasService } from 'src/app/services/evidencias.service'; // ✅ Import correcto
+import { EvidenciasService } from 'src/app/services/evidencias.service'; 
 
-// ✅ Mock del servicio como debe ser
+
 const mockEvidenciasService = {
   getEvidencias: () => of([
     { tienda: 'Puente Alto', anio: 2024, semana: 25 },
@@ -31,7 +31,7 @@ fdescribe('InsumosEvidenciasPage', () => {
         HttpClientTestingModule
       ],
       providers: [
-        { provide: EvidenciasService, useValue: mockEvidenciasService } // ✅ FIX AQUÍ
+        { provide: EvidenciasService, useValue: mockEvidenciasService } 
       ]
     }).compileComponents();
 

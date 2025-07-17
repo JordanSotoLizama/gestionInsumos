@@ -23,6 +23,7 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     FormsModule,
     IonicModule.forRoot(),
+    HttpClientModule
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

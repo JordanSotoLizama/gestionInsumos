@@ -5,7 +5,14 @@
     </ion-buttons>
     <ion-title>Picking</ion-title>
   </ion-toolbar>
+
+  <ion-toolbar class="header-personalizado">
+    <ion-label class="ion-padding" *ngIf="semanaActualService">
+      🗓️ Semana actual (servidor): <strong>{{ semanaActualService }}</strong>
+    </ion-label>
+  </ion-toolbar>
 </ion-header>
+
 
 <ion-content class="ion-padding">
   <div class="contenido-picking">
@@ -34,7 +41,7 @@
       </ion-row>
     </ion-grid>
 
-    <ion-card class="tabla-insumos" *ngIf="insumos.length > 0">
+    <ion-card class="tabla-insumos"  *ngIf="insumos.length > 0">
       <ion-grid>
         <ion-row class="encabezado">
           <ion-col><strong>Insumo</strong></ion-col>

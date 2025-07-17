@@ -6,6 +6,7 @@ import { InsumosService, Insumo } from 'src/app/services/insumos.service';
 import { TiendaService, Tienda } from 'src/app/services/tienda.service';
 import { Firestore, collection, addDoc } from '@angular/fire/firestore';
 import { Auth } from '@angular/fire/auth';
+import { WorldTimeService } from 'src/app/services/world-time.service';
 
 @Component({
   selector: 'app-insumos-picking',
@@ -19,6 +20,7 @@ export class InsumosPickingPage implements OnInit {
 
   anioActual: number = new Date().getFullYear();
   semanaActual: number | null = null;
+  semanaActualService: number | null = null;
 
   insumoSeleccionado: string = '';
 
@@ -40,12 +42,20 @@ export class InsumosPickingPage implements OnInit {
     private insumosService: InsumosService,
     private tiendaService: TiendaService,
     private firestore: Firestore,
-    private auth: Auth
+    private auth: Auth,
+    private worldTimeService: WorldTimeService
   ) {}
 
   ngOnInit() {
     this.cargarInsumos();
     this.cargarTiendas();
+
+    this.worldTimeService.getWeekNumber().subscribe({
+      next: (semana) => {
+        console.log(' Semana desde API:', semana);
+        this.semanaActualService = semana;},
+      error: (err) => console.error('Error al obtener semana de la API:', err),
+    });
   }
 
   cargarInsumos() {

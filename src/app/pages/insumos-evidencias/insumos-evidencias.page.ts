@@ -41,9 +41,10 @@ export class InsumosEvidenciasPage implements OnInit {
   async abrirDetalle(evidencia: any) {
     const modal = await this.modalCtrl.create({
       component: EvidenciaDetalleComponent,
-      componentProps: { evidencia }
+      componentProps: { evidencia },
     });
     await modal.present();
   }
+
 
 }
